@@ -1,0 +1,126 @@
+@media only screen and (max-width: 375px){
+    .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40vh;
+        height: 60vh;
+        padding: 20px;
+        transform: translate(-50%, -50%);
+        background: rgb(255, 255, 255);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        border-radius: 10px;
+      }
+      
+      .login-box h2 {
+        margin: 0 0 30px;
+        font-size: 1rem;
+        padding: 0;
+        font-weight: 600;
+        color: #2f9e40;
+        text-align: center;
+      }
+
+      .login-box form button {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #2f9e40;
+        font-size: 14px;
+        display: block;
+        margin: 0 auto;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: 1px solid #2f9e40;
+        overflow: hidden;
+        transition: .2s;
+        margin-top: 30%;
+        letter-spacing: 4px
+      }
+
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 13px;
+        color: #2f9e40;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #2f9e40;
+        outline: none;
+        background: transparent;
+      }
+      .login-box .user-box label {
+        position: absolute;
+        top:0;
+        left: 0;
+        padding: 10px 0;
+        opacity: 0.7;
+        font-size: 12px;
+        color: #000000;
+        pointer-events: none;
+        transition: .5s;
+      }
+
+      #tipo_calculo {
+        padding: 5px;
+        width: 100%;
+        margin: 10%;
+        font-size: 0.7rem;
+        margin-left: 0;
+        border-color: #000000;
+        background-color: transparent;
+        color: #000000;
+        transition: color 0.3s; /* Adicionando transição para suavizar a mudança de cor */
+    }
+
+    .ifrj-container {
+        display: flex;
+        align-items: center;
+        margin-top: 0%;
+        justify-content: center;
+        height: 10vh;
+        margin-bottom: 5%;
+      }
+      
+      .ifrj {
+        width: 10vh;
+        height: auto;
+      }
+
+      .tutorial{
+        text-align: center;
+        font-size: 0.6rem;
+        opacity: 0.8;
+        margin-top: 10%;
+        letter-spacing: 2px;
+        color: #000000;
+        padding: 20px;
+      
+      }
+
+      .autor{
+        font-size: 0.4rem;
+        opacity: 0.8;
+        letter-spacing: 2px;
+        margin: 0 auto;
+        margin-top: 175%;
+        display: flex;
+        color: #000000;
+      }
+      
+
+}
+
+@media only screen and (min-width: 376px) and (max-width: 650px){
+
+}
+
+@media only screen and (min-width: 651px) and (max-width: 1200px){
+
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 2000px){
+
+}
+

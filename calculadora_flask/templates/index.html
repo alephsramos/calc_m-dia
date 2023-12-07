@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='responsive.css') }}">
+    <title>Calculadora</title>
+</head>
+<body>
+        <p class="tutorial">Só serão aceitos valores de 0 - 10 no <b>resultado final</b>, caso ultrapasse, divida suas notas por 2 e tente novamente.
+    </p>
+    
+
+    
+    
+    {% if error is defined %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    <div class="login-box">
+        <div class="ifrj-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Instituto_Federal_do_Rio_de_Janeiro_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_do_Rio_de_Janeiro_-_Marca_Vertical_2015.svg.png" alt="IFRJ Logo" class="ifrj">
+          </div>
+        <h2>Calculadora</h2>
+        <form action="/calcular" method="post">
+            <div class="user-box">
+                <select name="tipo_calculo" id="tipo_calculo" onchange="mostrarOpcoes()" required>
+                    <option value="" selected disabled>Selecione uma opção</option>
+                    <option value="media">Média bimestral</option>
+                    <option value="media_prova">Nota necessária (última prova)</option>
+                    <option value="media_final">Média Final</option>
+                    <option value="media_recuperacao">Nota necessária (recuperação)</option>
+                </select>
+            </div>
+    
+            <div class="opcoes_media opcoes" style="display: none;">
+                <form action="/calcular_media" method="post">
+                    <div class="user-box">
+                        <input type="text" name="v1" required min="0" max="10" step="0.01">
+                        <label>Avaliação 1:</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" name="v2" required min="0" max="10" step="0.01"> 
+                        <label>Avaliação 2:</label>
+                    </div>
+                    <button type="submit">Calcular</button>
+                </form>
+                {% if mensagem_erro %}
+                    <p>{{ mensagem_erro }}</p>
+                {% endif %}
+                
+            </div>
+            
+            <!-- Opções específicas para o estilo "media_prova" -->
+            <div class="opcoes_media_prova opcoes" style="display: none;">
+                <form action="/calcular_media_prova" method="post">
+                    <div class="user-box">
+                        <input type="text" name="md1" id="md1" required>
+                        <label for="md1">Média 1:</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" name="v1" id="v1" required>
+                        <label for="v1">Avaliação 1:</label>
+                    </div>
+                    <button type="submit">Calcular</button>
+                </form>
+                {% if mensagem_erro %}
+                    <p>{{ mensagem_erro }}</p>
+                {% endif %}
+            </div>
+            
+            <!-- Opções específicas para o estilo "media_final" -->
+            <div class="opcoes_media_final opcoes" style="display: none;">
+                <form action="/calcular_media_final" method="post">
+                    <div class="user-box">
+                        <input type="text" name="md1" required>
+                        <label for="md1">Média 1:</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" name="md2" required>
+                        <label for="md2">Média 2:</label>
+                    </div>
+                    <button type="submit">Calcular</button>
+                </form>
+                {% if mensagem_erro %}
+                    <p>{{ mensagem_erro }}</p>
+                {% endif %}
+            </div>
+            
+            <!-- Opções específicas para o estilo "media_recuperacao" -->
+            <div class="opcoes_media_recuperacao opcoes" style="display: none;">
+                <form action="/calcular_media_recuperacao" method="post">
+                    <!-- Adicione opções específicas para a média recuperação aqui, se necessário -->
+                    <div class="user-box">
+                        <input type="text" name="md1" required>
+                        <label>Média 1:</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" name="md2" required>
+                        <label>Média 2:</label>
+                    </div>
+                    <button type="submit">Calcular</button>
+                </form>
+                {% if mensagem_erro %}
+                    <p>{{ mensagem_erro }}</p>
+                {% endif %}     
+            </div>
+    
+    
+            {% if resultado is defined %}
+                <p id="resultado" class="{{ cor_resultado }}">Resultado: <b>{{ resultado }}</b></p>
+            {% endif %}
+        </form>
+    </div>
+<div>
+    <p class="autor">Produzido por:<br> <b>Aleph Ramos<br>Alice Pereira</b></p></div>
+    
+    <script>
+        function mostrarOpcoes() {
+            var tipoCalculo = document.getElementById('tipo_calculo').value;
+            var opcoes = document.querySelectorAll('.opcoes');
+    
+            opcoes.forEach(function(opcao) {
+                opcao.style.display = 'none';
+            });
+    
+            var opcoesEspecificas = document.querySelector('.opcoes_' + tipoCalculo);
+    
+            if (opcoesEspecificas) {
+                opcoesEspecificas.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
